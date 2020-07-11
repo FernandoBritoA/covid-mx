@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Mexico from '@svg-maps/mexico';
 import { RadioSVGMap } from 'react-svg-map';
 import 'react-svg-map/lib/index.css';
 import TextUnderMouse from '../TextUnderMouse/TextUnderMouse';
 
 const SVGMap = () => {
+  const [hoveredItem, setHoveredItem] = useState(null);
   const [location, setLocation] = useState(null);
 
   const customMexico = {
@@ -17,14 +18,22 @@ const SVGMap = () => {
     }),
   };
 
+  console.log(location);
   return (
-    <div>
-      <RadioSVGMap
-        map={customMexico}
-        onChange={(e) => setLocation(e.attributes.name.value)}
-      />
-      <TextUnderMouse text={location} />
-    </div>
+    <Fragment>
+      <div className='svg-map-container' style={{ width: 500 }}>
+        <RadioSVGMap
+          map={customMexico}
+          onChange={(e) => setLocation(e.attributes.name.value)}
+          onLocationMouseOver={(e) =>
+            setHoveredItem(e.target.attributes.name.value)
+          }
+          onLocationMouseOut={() => setHoveredItem(null)}
+        />
+      </div>
+
+      <TextUnderMouse text={hoveredItem} />
+    </Fragment>
   );
 };
 

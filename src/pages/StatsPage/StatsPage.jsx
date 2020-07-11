@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SVGMap from '../../components/SVGMap/SVGMap';
 
-const StatsPage = () => {
+import { connect } from 'react-redux';
+import {
+  getGeneralStats,
+  getProvinceStats,
+} from '../../redux/stats/stats.actions';
+
+const StatsPage = ({ getGeneralStats, getProvinceStats }) => {
+  useEffect(() => {
+    getGeneralStats();
+    getProvinceStats();
+  }, [getGeneralStats, getProvinceStats]);
+
   return (
     <div className='stats-page'>
       <SVGMap />
@@ -9,4 +20,9 @@ const StatsPage = () => {
   );
 };
 
-export default StatsPage;
+const mapDispatchToProps = (dispatch) => ({
+  getGeneralStats: () => dispatch(getGeneralStats()),
+  getProvinceStats: () => dispatch(getProvinceStats()),
+});
+
+export default connect(null, mapDispatchToProps)(StatsPage);

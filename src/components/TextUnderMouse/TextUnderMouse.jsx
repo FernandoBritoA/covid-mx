@@ -1,31 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import './TextUnderMouse.css';
 
 const TextUnderMouse = ({ text }) => {
+  const [mouseX, setMouseX] = useState(null);
+  const [mouseY, setMouseY] = useState(null);
   useEffect(() => {
-    var x = null;
-    var y = null;
+    const onMouseUpdate = (e) => {
+      setMouseX(e.pageX + 15);
+      setMouseY(e.pageY + 20);
+    };
 
     document.addEventListener('mousemove', onMouseUpdate);
 
-    function onMouseUpdate(e) {
-      x = e.pageX;
-      y = e.pageY;
-      console.log(x, y);
-    }
-
-    function getMouseX() {
-      return x;
-    }
-
-    function getMouseY() {
-      return y;
-    }
     return () => {
       document.removeEventListener('mousemove', onMouseUpdate);
     };
   }, []);
 
-  return <div>{text}</div>;
+  return (
+    <div className='text-under-mouse' style={{ top: mouseY, left: mouseX }}>
+      {text}
+    </div>
+  );
 };
 
 export default TextUnderMouse;

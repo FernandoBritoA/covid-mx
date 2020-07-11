@@ -1,0 +1,5 @@
+.text-under-mouse {
+  position: absolute;
+  color: red;
+  top: 0;
+}

@@ -1,0 +1,13 @@
+.video-container {
+  width: 70%;
+  margin-left: auto;
+  top: auto;
+  overflow: hidden;
+  border: 1px solid white;
+}
+
+.bg-video {
+  width: 100%;
+  background-position: right;
+  background-size: cover;
+}

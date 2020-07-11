@@ -2,16 +2,12 @@ import React, { useEffect } from 'react';
 import SVGMap from '../../components/SVGMap/SVGMap';
 
 import { connect } from 'react-redux';
-import {
-  getGeneralStats,
-  getProvinceStats,
-} from '../../redux/stats/stats.actions';
+import { getProvinceStats } from '../../redux/stats/stats.actions';
 
-const StatsPage = ({ getGeneralStats, getProvinceStats }) => {
+const StatsPage = ({ getProvinceStats }) => {
   useEffect(() => {
-    getGeneralStats();
     getProvinceStats();
-  }, [getGeneralStats, getProvinceStats]);
+  }, [getProvinceStats]);
 
   return (
     <div className='stats-page'>
@@ -21,7 +17,6 @@ const StatsPage = ({ getGeneralStats, getProvinceStats }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getGeneralStats: () => dispatch(getGeneralStats()),
   getProvinceStats: () => dispatch(getProvinceStats()),
 });
 

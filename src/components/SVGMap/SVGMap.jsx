@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react';
+import './SVGMap.css';
 import Mexico from '@svg-maps/mexico';
 import { RadioSVGMap } from 'react-svg-map';
 import 'react-svg-map/lib/index.css';

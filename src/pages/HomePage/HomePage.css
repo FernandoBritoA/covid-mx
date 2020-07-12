@@ -3,4 +3,5 @@
   height: 100vh;
   border: 1px solid red;
   color: white;
+  overflow: hidden;
 }

@@ -5,10 +5,8 @@ import BackgroundVideo from '../../components/BackgroundVideo/BackgroundVideo';
 
 import { connect } from 'react-redux';
 import { getGeneralStats } from '../../redux/stats/stats.actions';
-import { createStructuredSelector } from 'reselect';
-import { selectAreGeneralStatsLoaded } from '../../redux/stats/stats.selectors';
 
-const HomePage = ({ getGeneralStats, areGeneralStatsLoaded }) => {
+const HomePage = ({ getGeneralStats }) => {
   useEffect(() => {
     getGeneralStats();
   }, [getGeneralStats]);
@@ -25,8 +23,4 @@ const mapDispatchToProps = (dispatch) => ({
   getGeneralStats: () => dispatch(getGeneralStats()),
 });
 
-const mapStateToProps = createStructuredSelector({
-  areGeneralStatsLoaded: selectAreGeneralStatsLoaded,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(null, mapDispatchToProps)(HomePage);

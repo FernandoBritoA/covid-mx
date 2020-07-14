@@ -32,7 +32,7 @@ const StatsPage = ({
     getProvinceStats();
     getGeneralStats();
   }, [getProvinceStats, getGeneralStats]);
-
+  //
   return areStatsLoaded ? (
     <div className='stats-page'>
       <div className='stats-page-container'>
@@ -42,7 +42,7 @@ const StatsPage = ({
             array={confirmed}
             total={generalStats.confirmed.value}
             label={'Confirmados'}
-            color={'red'}
+            color={'#fe2121'}
           />
           <LastUpdateBlock lastUpdate={generalStats.lastUpdate} />
         </div>
@@ -56,14 +56,14 @@ const StatsPage = ({
               array={deaths}
               total={generalStats.deaths.value}
               label={'Fallecidos'}
-              color={'white'}
+              color={'grey'}
             />
             <ResultsColumn
               large={false}
               array={recovered}
               total={generalStats.recovered.value}
               label={'Recuperados'}
-              color={'green'}
+              color={'#1acb1a'}
             />
           </div>
           <Graph />

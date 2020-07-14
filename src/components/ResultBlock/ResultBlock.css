@@ -1,0 +1,13 @@
+.result-block {
+  display: flex;
+  border-bottom: 2px solid var(--bright-grey-opac);
+  font-size: 1.1rem;
+}
+
+.result-num {
+  padding-left: 4px;
+  font-weight: 700;
+  width: 63px;
+  letter-spacing: 0.3px;
+  filter: brightness(1.8);
+}

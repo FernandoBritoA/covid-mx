@@ -4,6 +4,8 @@
   --box-shadow: 1px 1px 5px var(--shadow-color);
   --dark-grey: #202020;
   --light-grey: #333333;
+  --bright-grey: rgba(175, 182, 188, 1);
+  --bright-grey-opac: rgba(175, 182, 188, 0.3);
   --hover-yellow: #ff7400;
   --border-radius: 0.3rem;
 }
@@ -23,6 +25,8 @@ body {
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   color: var(--main-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 a {

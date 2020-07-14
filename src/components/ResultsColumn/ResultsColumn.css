@@ -16,6 +16,18 @@
   flex: 1 1 auto;
   background: var(--light-grey);
   border-radius: var(--border-radius);
-  margin: 0.1rem 0;
   overflow-y: scroll;
+  margin-bottom: 0.3rem;
+}
+.results-container::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+.results-container::-webkit-scrollbar-track {
+  background: var(--bright-grey-opac);
+}
+
+.results-container::-webkit-scrollbar-thumb {
+  background: var(--bright-grey);
+  border-radius: 6px;
 }

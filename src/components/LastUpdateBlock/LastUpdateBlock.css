@@ -1,6 +1,6 @@
 .last-update-block {
   width: 100%;
-
+  height: 8%;
   background: var(--light-grey);
   border-radius: var(--border-radius);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,

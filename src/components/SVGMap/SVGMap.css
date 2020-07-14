@@ -18,7 +18,7 @@
 }
 
 .svg-map__location {
-  stroke: white;
+  stroke: var(--bright-grey);
   stroke-width: 1pt;
   fill: var(--light-grey);
   transition: 1s;

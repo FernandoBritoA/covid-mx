@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react';
 import './SVGMap.css';
 import Mexico from '@svg-maps/mexico';
 import { RadioSVGMap } from 'react-svg-map';
-import 'react-svg-map/lib/index.css';
+//import 'react-svg-map/lib/index.css';
 import TextUnderMouse from '../TextUnderMouse/TextUnderMouse';
 
 const SVGMap = () => {
@@ -22,8 +22,9 @@ const SVGMap = () => {
   console.log(location);
   return (
     <Fragment>
-      <div className='svg-map-container' style={{ width: 500 }}>
+      <div className='svg-map-container'>
         <RadioSVGMap
+          className='svg-map'
           map={customMexico}
           onChange={(e) => setLocation(e.attributes.name.value)}
           onLocationMouseOver={(e) =>

@@ -1,12 +1,11 @@
 :root {
   --main-color: white;
-  --sub-color: #336699;
   --shadow-color: rgba(51, 51, 51, 0.3);
-  --danger-color: #dc3545;
-  --success-color: #17a2b8;
   --box-shadow: 1px 1px 5px var(--shadow-color);
-  --border-radius: 0.6rem;
-  --transparent-sub-color: rgba(51, 102, 153, 0.1);
+  --dark-grey: #202020;
+  --light-grey: #333333;
+  --hover-yellow: #ff7400;
+  --border-radius: 0.3rem;
 }
 
 * {

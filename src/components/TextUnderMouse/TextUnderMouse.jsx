@@ -6,8 +6,8 @@ const TextUnderMouse = ({ text }) => {
   const [mouseY, setMouseY] = useState(null);
   useEffect(() => {
     const onMouseUpdate = (e) => {
-      setMouseX(e.pageX + 15);
-      setMouseY(e.pageY + 20);
+      setMouseX(e.pageX + 5);
+      setMouseY(e.pageY - 25);
     };
 
     document.addEventListener('mousemove', onMouseUpdate);

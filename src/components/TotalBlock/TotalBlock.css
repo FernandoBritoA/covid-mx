@@ -1,0 +1,10 @@
+.total-block {
+  background: var(--light-grey);
+  height: 80px;
+  width: 100%;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

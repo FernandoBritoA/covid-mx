@@ -1,11 +1,20 @@
 .stats-page {
-  background: #333333;
-  background: #202020;
+  background: var(--dark-grey);
   height: 100%;
 }
 
+.stats-page-container {
+  position: absolute;
+  margin-top: 2.6rem;
+  padding: 0.3rem;
+  height: calc(100vh - 2.6rem);
+  display: flex;
+}
+
 .test {
-  width: 300px;
-  height: 500px;
-  background: #333333;
+  background: var(--light-grey);
+  height: 100%;
+  width: 221px;
+  margin-left: 0.3rem;
+  border-radius: var(--border-radius);
 }

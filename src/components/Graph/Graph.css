@@ -1,7 +1,6 @@
-.results-container {
+.graph-container {
   width: 100%;
-  flex: 1 1 auto;
+  height: 50%;
   background: var(--light-grey);
   border-radius: var(--border-radius);
-  margin: 0.2rem 0;
 }

@@ -19,7 +19,6 @@ const SVGMap = () => {
     }),
   };
 
-  console.log(location);
   return (
     <Fragment>
       <div className='svg-map-container'>

@@ -11,10 +11,21 @@
   display: flex;
 }
 
-.test {
-  background: var(--light-grey);
+.large-column {
+  width: 280px;
   height: 100%;
-  width: 221px;
-  margin-left: 0.3rem;
-  border-radius: var(--border-radius);
+}
+
+.small-columns-container {
+  width: 451.6px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.3rem;
+}
+.small-columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50%;
 }

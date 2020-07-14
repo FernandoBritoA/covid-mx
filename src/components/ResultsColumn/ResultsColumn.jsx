@@ -1,31 +1,19 @@
 import React from 'react';
 import './ResultsColumn.css';
 import TotalBlock from '../TotalBlock/TotalBlock';
-import ResultsContainer from '../ResultsContainer/ResultsContainer';
+import ResultBlock from '../ResultBlock/ResultBlock';
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import {
-  selectGeneralStats,
-  selectProvinceStats,
-} from '../../redux/stats/stats.selectors';
-
-const ResultsColumn = ({ generalStats, provinceStats }) => {
+const ResultsColumn = ({ large, array, total, label, color }) => {
   return (
-    <div className='results-column'>
-      <TotalBlock color='red' label='Confirmados' />
-      <ResultsContainer />
-      <div className='last-update-column'>
-        <p>Ultima actualización:</p>
-        <p>2o/08/29</p>
+    <div className={`results-column ${large ? 'large' : null}`}>
+      <TotalBlock color={color} label={label} total={total} />
+      <div className='results-container'>
+        {array.map(({ uid, ...props }) => (
+          <ResultBlock key={uid} {...props} color={color} />
+        ))}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  generalStats: selectGeneralStats,
-  provinceStats: selectProvinceStats,
-});
-
-export default connect(mapStateToProps)(ResultsColumn);
+export default ResultsColumn;

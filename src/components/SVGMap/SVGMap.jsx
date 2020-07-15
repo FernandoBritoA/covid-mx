@@ -2,26 +2,51 @@ import React, { useState, Fragment } from 'react';
 import './SVGMap.css';
 import Mexico from '@svg-maps/mexico';
 import { RadioSVGMap } from 'react-svg-map';
-//import 'react-svg-map/lib/index.css';
+import CustomSelector from '../CustomSelector/CustomSelector';
 import TextUnderMouse from '../TextUnderMouse/TextUnderMouse';
+import SpecificStatBlock from '../SpecificStatBlock/SpecificStatBlock';
 
-const SVGMap = () => {
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectConfirmedByProvince } from '../../redux/stats/stats.selectors';
+
+const SVGMap = ({ locationsArr }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [location, setLocation] = useState(null);
+
+  /*const idsObj = {};
+  locationsArr.forEach((location) => {
+    idsObj[location.provinceState] = location.uid;
+  });*/
 
   const customMexico = {
     ...Mexico,
     label: 'Custom map label',
     locations: Mexico.locations.map((location) => {
-      return location.name === 'Mexico City'
-        ? { ...location, name: 'Ciudad de Mexico' }
-        : location;
+      const name = location.name
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+      if (name === 'Mexico City') {
+        return {
+          ...location,
+          name: 'Ciudad de Mexico',
+          //id: idsObj['Ciudad de Mexico'],
+        };
+      } else {
+        return {
+          ...location,
+          name: name,
+          //id: idsObj[name],
+        };
+      }
     }),
   };
 
   return (
     <Fragment>
       <div className='svg-map-container'>
+        <CustomSelector options={locationsArr} />
         <RadioSVGMap
           className='svg-map'
           map={customMexico}
@@ -31,6 +56,12 @@ const SVGMap = () => {
           }
           onLocationMouseOut={() => setHoveredItem(null)}
         />
+
+        <div className='specific-stats-container'>
+          {[1, 2, 3, 4].map((i) => (
+            <SpecificStatBlock key={i} />
+          ))}
+        </div>
       </div>
 
       <TextUnderMouse text={hoveredItem} />
@@ -38,4 +69,8 @@ const SVGMap = () => {
   );
 };
 
-export default SVGMap;
+const mapStateToProps = createStructuredSelector({
+  locationsArr: selectConfirmedByProvince,
+});
+
+export default connect(mapStateToProps)(SVGMap);

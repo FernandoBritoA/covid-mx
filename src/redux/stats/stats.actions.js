@@ -31,3 +31,8 @@ export const getProvinceStats = () => async (dispatch) => {
     dispatch(getStatsFailure(error.message));
   }
 };
+
+export const setLocation = (location) => ({
+  type: statsAT.SET_LOCATION,
+  payload: location,
+});

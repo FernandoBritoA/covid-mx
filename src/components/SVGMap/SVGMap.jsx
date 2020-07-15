@@ -7,12 +7,13 @@ import TextUnderMouse from '../TextUnderMouse/TextUnderMouse';
 import SpecificStatBlock from '../SpecificStatBlock/SpecificStatBlock';
 
 import { connect } from 'react-redux';
+import { setLocation } from '../../redux/stats/stats.actions';
 import { createStructuredSelector } from 'reselect';
-import { selectConfirmedByProvince } from '../../redux/stats/stats.selectors';
+import { selectSpecificLocation } from '../../redux/stats/stats.selectors';
 
-const SVGMap = ({ locationsArr }) => {
+const SVGMap = ({ setLocation, specificLocation }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
-  const [location, setLocation] = useState(null);
+  const { confirmed, deaths, recovered, active } = specificLocation;
 
   /*const idsObj = {};
   locationsArr.forEach((location) => {
@@ -46,7 +47,11 @@ const SVGMap = ({ locationsArr }) => {
   return (
     <Fragment>
       <div className='svg-map-container'>
-        <CustomSelector options={locationsArr} />
+        <CustomSelector
+          options={customMexico.locations}
+          setLocation={setLocation}
+          value={specificLocation.provinceState}
+        />
         <RadioSVGMap
           className='svg-map'
           map={customMexico}
@@ -58,9 +63,18 @@ const SVGMap = ({ locationsArr }) => {
         />
 
         <div className='specific-stats-container'>
-          {[1, 2, 3, 4].map((i) => (
-            <SpecificStatBlock key={i} />
-          ))}
+          <SpecificStatBlock
+            label='CONFIRMADOS'
+            value={confirmed}
+            color='#fe2121'
+          />
+          <SpecificStatBlock label='FALLECIDOS' value={deaths} color='grey' />
+          <SpecificStatBlock
+            label='RECUPERADOS'
+            value={recovered}
+            color='#1acb1a'
+          />
+          <SpecificStatBlock label='ACTIVOS' value={active} color='#274ea9' />
         </div>
       </div>
 
@@ -70,7 +84,11 @@ const SVGMap = ({ locationsArr }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  locationsArr: selectConfirmedByProvince,
+  specificLocation: selectSpecificLocation,
 });
 
-export default connect(mapStateToProps)(SVGMap);
+const mapDispatchToProps = (dispatch) => ({
+  setLocation: (location) => dispatch(setLocation(location)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SVGMap);

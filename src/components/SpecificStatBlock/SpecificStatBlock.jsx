@@ -1,11 +1,14 @@
 import React from 'react';
 import './SpecificStatBlock.css';
 
-const SpecificStatBlock = () => {
+const SpecificStatBlock = ({ label, color, value }) => {
   return (
-    <div className='specific-stat-block'>
-      <label className='specific-stat-label'>Confirmados: </label>
-      <span>1234</span>
+    <div
+      className='specific-stat-block'
+      style={{ borderLeft: `5px solid ${color}`, color: color }}
+    >
+      <label className='specific-stat-label'>{label} </label>
+      <span className='specific-stat-number'>{value.toLocaleString()}</span>
     </div>
   );
 };

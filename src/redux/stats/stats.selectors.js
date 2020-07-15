@@ -14,6 +14,7 @@ export const selectGeneralStats = createSelector(
 );
 
 //Province Stats
+
 export const selectConfirmedByProvince = createSelector(
   [selectStats],
   (stats) =>
@@ -45,3 +46,14 @@ export const selectRecoveredByProvince = createSelector(
         }))
       : null
 );
+
+export const selectSpecificLocation = createSelector([selectStats], (stats) => {
+  if (!stats.location) return null;
+
+  const location = stats.location;
+  const provincesArray = stats.provincesArray;
+
+  return provincesArray.filter(
+    (province) => province.provinceState === location
+  )[0];
+});

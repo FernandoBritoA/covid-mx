@@ -31,3 +31,7 @@
   background: var(--bright-grey);
   border-radius: 6px;
 }
+
+.results-container::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}

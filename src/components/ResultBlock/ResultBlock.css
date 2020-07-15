@@ -2,6 +2,12 @@
   display: flex;
   border-bottom: 2px solid var(--bright-grey-opac);
   font-size: 1.1rem;
+  transition: 0.5s;
+}
+
+.result-block:hover {
+  cursor: pointer;
+  background: var(--bright-grey-opac);
 }
 
 .result-num {

@@ -1,23 +1,17 @@
 import React from 'react';
 import './CustomSelector.css';
 
-const CustomSelector = ({ options }) => {
+const CustomSelector = ({ options, setLocation, value }) => {
   return (
     <select
       className='custom-selector'
-      //onChange={(e) => handleChange(e.target.value)}
+      onChange={(e) => setLocation(e.target.value)}
+      value={value}
     >
-      <option defaultValue={'Cualquiera'} className='custom-selector-option'>
-        Cualquiera
-      </option>
       {options
-        ? options.map(({ uid, provinceState }) => (
-            <option
-              key={uid + 1}
-              value={provinceState}
-              className='custom-selector-option'
-            >
-              {provinceState}
+        ? options.map(({ id, name }) => (
+            <option key={id} value={name} className='custom-selector-option'>
+              {name}
             </option>
           ))
         : null}

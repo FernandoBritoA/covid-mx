@@ -28,7 +28,7 @@ const GeneralStatsDisplay = ({ generalStats }) => {
         Confirmados: <Odometer value={confirmed} />
       </div>
       <div className='general-stats-display'>
-        Defunciones: <Odometer value={deaths} />
+        Fallecidos: <Odometer value={deaths} />
       </div>
       <div className='general-stats-display'>
         Recuperados: <Odometer value={recovered} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import './SpecificStatBlock.css';
+import Odometer from 'react-odometerjs';
 
 const SpecificStatBlock = ({ label, color, value }) => {
   return (
@@ -8,7 +9,7 @@ const SpecificStatBlock = ({ label, color, value }) => {
       style={{ borderLeft: `5px solid ${color}`, color: color }}
     >
       <label className='specific-stat-label'>{label} </label>
-      <span className='specific-stat-number'>{value.toLocaleString()}</span>
+      <Odometer value={value} />
     </div>
   );
 };

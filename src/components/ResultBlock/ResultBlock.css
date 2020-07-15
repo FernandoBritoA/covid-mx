@@ -5,6 +5,10 @@
   transition: 0.5s;
 }
 
+.active-block {
+  background: var(--bright-grey-opac);
+}
+
 .result-block:hover {
   cursor: pointer;
   background: var(--bright-grey-opac);

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import './SVGMap.css';
 import Mexico from '@svg-maps/mexico';
 import { RadioSVGMap } from 'react-svg-map';
@@ -15,10 +15,17 @@ const SVGMap = ({ setLocation, specificLocation }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const { confirmed, deaths, recovered, active } = specificLocation;
 
-  /*const idsObj = {};
-  locationsArr.forEach((location) => {
-    idsObj[location.provinceState] = location.uid;
-  });*/
+  useEffect(() => {
+    const list = document.getElementsByClassName('svg-map__location');
+    for (let i = 0; i < list.length; i++) {
+      list[i].style.fill = 'var(--light-grey)';
+    }
+
+    const elementToFill = document.getElementsByName(
+      specificLocation.provinceState
+    )[0];
+    elementToFill.style.fill = 'var(--hover-yellow)';
+  }, [specificLocation.provinceState]);
 
   const customMexico = {
     ...Mexico,
@@ -32,16 +39,25 @@ const SVGMap = ({ setLocation, specificLocation }) => {
         return {
           ...location,
           name: 'Ciudad de Mexico',
-          //id: idsObj['Ciudad de Mexico'],
         };
       } else {
         return {
           ...location,
           name: name,
-          //id: idsObj[name],
         };
       }
     }),
+  };
+
+  const hoverOver = (e) => {
+    setHoveredItem(e.target.attributes.name.value);
+    e.target.style.fill = 'var(--hover-yellow)';
+  };
+  const hoverOut = (e) => {
+    setHoveredItem(null);
+    if (e.target.attributes.name.value !== specificLocation.provinceState) {
+      e.target.style.fill = 'var(--light-grey)';
+    }
   };
 
   return (
@@ -56,10 +72,8 @@ const SVGMap = ({ setLocation, specificLocation }) => {
           className='svg-map'
           map={customMexico}
           onChange={(e) => setLocation(e.attributes.name.value)}
-          onLocationMouseOver={(e) =>
-            setHoveredItem(e.target.attributes.name.value)
-          }
-          onLocationMouseOut={() => setHoveredItem(null)}
+          onLocationMouseOver={(e) => hoverOver(e)}
+          onLocationMouseOut={(e) => hoverOut(e)}
         />
 
         <div className='specific-stats-container'>

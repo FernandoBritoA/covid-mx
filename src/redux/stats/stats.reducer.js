@@ -1,7 +1,7 @@
 import statsAT from './stats.actionTypes';
 
 const INITIAL_STATE = {
-  location: 'Aguascalientes',
+  location: 'Ciudad de Mexico',
   generalStats: null,
   provincesArray: null,
   errors: undefined,

@@ -3,11 +3,17 @@ import './ResultBlock.css';
 
 import { connect } from 'react-redux';
 import { setLocation } from '../../redux/stats/stats.actions';
+import { createStructuredSelector } from 'reselect';
+import { selectSpecificLocation } from '../../redux/stats/stats.selectors';
 
-const ResultBlock = ({ setLocation, color, ...props }) => {
+const ResultBlock = ({ specificLocation, setLocation, color, ...props }) => {
   const { value, provinceState } = props;
+  const active = specificLocation.provinceState === provinceState;
   return (
-    <div className='result-block' onClick={() => setLocation(provinceState)}>
+    <div
+      className={`result-block ${active ? 'active-block' : ''}`}
+      onClick={() => setLocation(provinceState)}
+    >
       <span style={{ color: color }} className='result-num'>
         {value.toLocaleString()}
       </span>
@@ -16,8 +22,12 @@ const ResultBlock = ({ setLocation, color, ...props }) => {
   );
 };
 
+const mapStateToProps = createStructuredSelector({
+  specificLocation: selectSpecificLocation,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setLocation: (location) => dispatch(setLocation(location)),
 });
 
-export default connect(null, mapDispatchToProps)(ResultBlock);
+export default connect(mapStateToProps, mapDispatchToProps)(ResultBlock);

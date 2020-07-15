@@ -4,6 +4,7 @@ import SVGMap from '../../components/SVGMap/SVGMap';
 import ResultsColumn from '../../components/ResultsColumn/ResultsColumn';
 import LastUpdateBlock from '../../components/LastUpdateBlock/LastUpdateBlock';
 import Graph from '../../components/Graph/Graph';
+import SpinnerBackground from '../../components/SpinnerBackground/SpinnerBackground';
 
 import { connect } from 'react-redux';
 import {
@@ -70,7 +71,9 @@ const StatsPage = ({
         </div>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <SpinnerBackground />
+  );
 };
 
 const mapStateToProps = createStructuredSelector({

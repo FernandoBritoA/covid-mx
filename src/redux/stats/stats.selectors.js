@@ -4,7 +4,11 @@ const selectStats = (state) => state.stats;
 
 export const selectAreStatsLoaded = createSelector(
   [selectStats],
-  (stats) => !!stats.generalStats && !!stats.provincesArray
+  (stats) =>
+    !!stats.generalStats &&
+    !!stats.confirmed &&
+    !!stats.recovered &&
+    !!stats.deaths
 );
 
 //General Stats
@@ -18,8 +22,8 @@ export const selectGeneralStats = createSelector(
 export const selectConfirmedByProvince = createSelector(
   [selectStats],
   (stats) =>
-    stats.provincesArray
-      ? stats.provincesArray.map(({ provinceState, confirmed, uid }) => ({
+    stats.confirmed
+      ? stats.confirmed.map(({ provinceState, confirmed, uid }) => ({
           provinceState,
           value: confirmed,
           uid,
@@ -27,8 +31,8 @@ export const selectConfirmedByProvince = createSelector(
       : null
 );
 export const selectDeathsByProvince = createSelector([selectStats], (stats) =>
-  stats.provincesArray
-    ? stats.provincesArray.map(({ provinceState, deaths, uid }) => ({
+  stats.deaths
+    ? stats.deaths.map(({ provinceState, deaths, uid }) => ({
         provinceState,
         value: deaths,
         uid,
@@ -38,8 +42,8 @@ export const selectDeathsByProvince = createSelector([selectStats], (stats) =>
 export const selectRecoveredByProvince = createSelector(
   [selectStats],
   (stats) =>
-    stats.provincesArray
-      ? stats.provincesArray.map(({ provinceState, recovered, uid }) => ({
+    stats.recovered
+      ? stats.recovered.map(({ provinceState, recovered, uid }) => ({
           provinceState,
           value: recovered,
           uid,
@@ -51,7 +55,7 @@ export const selectSpecificLocation = createSelector([selectStats], (stats) => {
   if (!stats.location) return null;
 
   const location = stats.location;
-  const provincesArray = stats.provincesArray;
+  const provincesArray = stats.confirmed;
 
   return provincesArray.filter(
     (province) => province.provinceState === location

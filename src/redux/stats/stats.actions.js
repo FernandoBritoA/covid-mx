@@ -15,6 +15,12 @@ export const getGeneralStats = () => async (dispatch) => {
     const response = await axios.get(
       'https://covid19.mathdro.id/api/countries/Mexico'
     );
+    /*const response2 = await axios.get(
+      'https://covid19.mathdro.id/api/daily/5-30-2020'
+    );
+    console.log(
+      response2.data.filter((t) => t.provinceState === 'Quintana Roo')
+    );*/
     dispatch(getStatsSuccess({ generalStats: response.data }));
   } catch (error) {
     dispatch(getStatsFailure(error.message));
@@ -23,10 +29,20 @@ export const getGeneralStats = () => async (dispatch) => {
 
 export const getProvinceStats = () => async (dispatch) => {
   try {
-    const response = await axios.get(
+    const confirmed = await axios.get(
       'https://covid19.mathdro.id/api/countries/Mexico/confirmed'
     );
-    dispatch(getStatsSuccess({ provincesArray: response.data }));
+    dispatch(getStatsSuccess({ confirmed: confirmed.data }));
+
+    const recovered = await axios.get(
+      'https://covid19.mathdro.id/api/countries/Mexico/recovered'
+    );
+    dispatch(getStatsSuccess({ recovered: recovered.data }));
+
+    const deaths = await axios.get(
+      'https://covid19.mathdro.id/api/countries/Mexico/deaths'
+    );
+    dispatch(getStatsSuccess({ deaths: deaths.data }));
   } catch (error) {
     dispatch(getStatsFailure(error.message));
   }

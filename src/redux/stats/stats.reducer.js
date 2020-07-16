@@ -3,7 +3,9 @@ import statsAT from './stats.actionTypes';
 const INITIAL_STATE = {
   location: 'Ciudad de Mexico',
   generalStats: null,
-  provincesArray: null,
+  confirmed: null,
+  recovered: null,
+  deaths: null,
   errors: undefined,
 };
 

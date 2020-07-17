@@ -10,3 +10,8 @@ export const selectAreChartsLoading = createSelector(
 export const selectChartsData = createSelector([selectCharts], (charts) =>
   charts.arr ? charts.arr : null
 );
+
+export const selectChartToDisplay = createSelector(
+  [selectCharts],
+  (charts) => charts.chart
+);

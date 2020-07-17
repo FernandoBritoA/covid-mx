@@ -2,7 +2,7 @@ import chartsAT from './charts.actionTypes';
 
 const INITIAL_STATE = {
   arr: null,
-  chart: 'confirmed',
+  chart: { label: 'CONFIRMADOS', color: '#fe2121' },
   loading: false,
   error: undefined,
 };

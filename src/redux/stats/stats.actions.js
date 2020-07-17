@@ -15,12 +15,6 @@ export const getGeneralStats = () => async (dispatch) => {
     const response = await axios.get(
       'https://covid19.mathdro.id/api/countries/Mexico'
     );
-    /*const response2 = await axios.get(
-      'https://covid19.mathdro.id/api/daily/5-30-2020'
-    );
-    console.log(
-      response2.data.filter((t) => t.provinceState === 'Quintana Roo')
-    );*/
     dispatch(getStatsSuccess({ generalStats: response.data }));
   } catch (error) {
     dispatch(getStatsFailure(error.message));

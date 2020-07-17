@@ -9,11 +9,14 @@ import SpecificStatBlock from '../SpecificStatBlock/SpecificStatBlock';
 import { connect } from 'react-redux';
 import { setLocation } from '../../redux/stats/stats.actions';
 import { createStructuredSelector } from 'reselect';
-import { selectSpecificLocation } from '../../redux/stats/stats.selectors';
+import {
+  selectSpecificLocation,
+  selectSpecificLocationData,
+} from '../../redux/stats/stats.selectors';
 
-const SVGMap = ({ setLocation, specificLocation }) => {
+const SVGMap = ({ setLocation, specificLocation, specificLocationData }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
-  const { confirmed, deaths, recovered, active } = specificLocation;
+  const { confirmed, deaths, recovered, active } = specificLocationData;
 
   useEffect(() => {
     const list = document.getElementsByClassName('svg-map__location');
@@ -21,11 +24,9 @@ const SVGMap = ({ setLocation, specificLocation }) => {
       list[i].style.fill = 'var(--light-grey)';
     }
 
-    const elementToFill = document.getElementsByName(
-      specificLocation.provinceState
-    )[0];
+    const elementToFill = document.getElementsByName(specificLocation)[0];
     elementToFill.style.fill = 'var(--hover-yellow)';
-  }, [specificLocation.provinceState]);
+  }, [specificLocation]);
 
   const customMexico = {
     ...Mexico,
@@ -55,7 +56,7 @@ const SVGMap = ({ setLocation, specificLocation }) => {
   };
   const hoverOut = (e) => {
     setHoveredItem(null);
-    if (e.target.attributes.name.value !== specificLocation.provinceState) {
+    if (e.target.attributes.name.value !== specificLocation) {
       e.target.style.fill = 'var(--light-grey)';
     }
   };
@@ -66,7 +67,7 @@ const SVGMap = ({ setLocation, specificLocation }) => {
         <CustomSelector
           options={customMexico.locations}
           setLocation={setLocation}
-          value={specificLocation.provinceState}
+          value={specificLocation}
         />
         <RadioSVGMap
           className='svg-map'
@@ -99,6 +100,7 @@ const SVGMap = ({ setLocation, specificLocation }) => {
 
 const mapStateToProps = createStructuredSelector({
   specificLocation: selectSpecificLocation,
+  specificLocationData: selectSpecificLocationData,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -22,7 +22,7 @@ const HomePage = ({ getGeneralStats }) => {
   }, [getGeneralStats]);
   return (
     <div className='home-page'>
-      {ready ? <GeneralStatsDisplay /> : <SpinnerBackground />}
+      {ready ? <GeneralStatsDisplay /> : <SpinnerBackground bgColor='black' />}
 
       <BackgroundVideo />
     </div>

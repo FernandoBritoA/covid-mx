@@ -3,7 +3,7 @@ import './StatsPage.css';
 import SVGMap from '../../components/SVGMap/SVGMap';
 import ResultsColumn from '../../components/ResultsColumn/ResultsColumn';
 import LastUpdateBlock from '../../components/LastUpdateBlock/LastUpdateBlock';
-import Graph from '../../components/Graph/Graph';
+import LineChart from '../../components/LineChart/LineChart';
 import SpinnerBackground from '../../components/SpinnerBackground/SpinnerBackground';
 
 import { connect } from 'react-redux';
@@ -11,6 +11,7 @@ import {
   getProvinceStats,
   getGeneralStats,
 } from '../../redux/stats/stats.actions';
+
 import { createStructuredSelector } from 'reselect';
 import {
   selectConfirmedByProvince,
@@ -67,12 +68,12 @@ const StatsPage = ({
               color={'#1acb1a'}
             />
           </div>
-          <Graph />
+          <LineChart />
         </div>
       </div>
     </div>
   ) : (
-    <SpinnerBackground />
+    <SpinnerBackground bgColor='var(--dark-grey)' />
   );
 };
 

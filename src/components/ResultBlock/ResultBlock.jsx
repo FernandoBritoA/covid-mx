@@ -8,7 +8,7 @@ import { selectSpecificLocation } from '../../redux/stats/stats.selectors';
 
 const ResultBlock = ({ specificLocation, setLocation, color, ...props }) => {
   const { value, provinceState } = props;
-  const active = specificLocation.provinceState === provinceState;
+  const active = specificLocation === provinceState;
   return (
     <div
       className={`result-block ${active ? 'active-block' : ''}`}

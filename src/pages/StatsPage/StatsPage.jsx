@@ -3,7 +3,7 @@ import './StatsPage.css';
 import SVGMap from '../../components/SVGMap/SVGMap';
 import ResultsColumn from '../../components/ResultsColumn/ResultsColumn';
 import LastUpdateBlock from '../../components/LastUpdateBlock/LastUpdateBlock';
-import LineChart from '../../components/LineChart/LineChart';
+import Rechart from '../../components/Rechart/Rechart';
 import SpinnerBackground from '../../components/SpinnerBackground/SpinnerBackground';
 
 import { connect } from 'react-redux';
@@ -68,7 +68,7 @@ const StatsPage = ({
               color={'#1acb1a'}
             />
           </div>
-          <LineChart />
+          <Rechart />
         </div>
       </div>
     </div>

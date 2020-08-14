@@ -1,5 +1,5 @@
 .results-column {
-  width: 221.5px;
+  width: 49.5%; /*620px*/
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -19,19 +19,16 @@
   overflow-y: scroll;
   margin-bottom: 0.3rem;
 }
-.results-container::-webkit-scrollbar {
-  width: 0.45rem;
+
+@media screen and (max-width: 1350px) {
+  .results-column {
+    height: 300px;
+  }
 }
 
-.results-container::-webkit-scrollbar-track {
-  background: var(--bright-grey-opac);
-}
-
-.results-container::-webkit-scrollbar-thumb {
-  background: var(--bright-grey);
-  border-radius: 6px;
-}
-
-.results-container::-webkit-scrollbar-thumb:hover {
-  cursor: pointer;
+@media screen and (max-width: 600px) {
+  .results-column {
+    height: 200px;
+    width: 100%;
+  }
 }

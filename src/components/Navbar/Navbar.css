@@ -43,3 +43,15 @@
 .nav-link:hover {
   color: var(--hover-yellow);
 }
+
+@media screen and (max-width: 1350px) {
+  .navbar {
+    top: 0;
+    padding: 0;
+  }
+
+  .active {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+}

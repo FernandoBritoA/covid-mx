@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, Fragment } from 'react';
+import React, { useEffect, useCallback, Fragment, useState } from 'react';
 import './Rechart.css';
 
 import {
@@ -28,8 +28,17 @@ const Rechart = ({
   specificLocation,
   chartToDisplay,
 }) => {
+  const [graphWidth, setGraphWidth] = useState(400);
   useEffect(() => {
     getCharts(specificLocation);
+
+    const handleResize = () =>
+      window.innerWidth < 450 ? setGraphWidth(320) : setGraphWidth(400);
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [getCharts, specificLocation]);
 
   const { label, color } = chartToDisplay;
@@ -109,7 +118,7 @@ const Rechart = ({
             </span>
           </h4>
           <LineChart
-            width={430}
+            width={graphWidth}
             height={260}
             data={getData()}
             margin={{ bottom: -5, left: -5 }}

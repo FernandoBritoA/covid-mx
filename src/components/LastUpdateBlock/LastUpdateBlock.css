@@ -14,3 +14,9 @@
 .last-update-date {
   font-weight: 500;
 }
+
+@media screen and (max-width: 1350px) {
+  .last-update-block {
+    margin-bottom: 0.3rem;
+  }
+}

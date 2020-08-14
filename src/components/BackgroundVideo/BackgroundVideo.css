@@ -11,3 +11,19 @@
   width: 1400px;
   margin-left: 30%;
 }
+
+@media screen and (max-width: 800px) {
+  .bg-video {
+    margin-top: 15rem;
+    margin-left: 0;
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .bg-video {
+    margin-top: 18rem;
+    margin-left: -5rem;
+    width: 800px;
+  }
+}

@@ -23,7 +23,7 @@ const GeneralStatsDisplay = ({ generalStats }) => {
   //150
   return (
     <div className='general-stats'>
-      <h1>Información General</h1>
+      <h1 className='general-stats-title'>Información General</h1>
       <div className='general-stats-display'>
         Confirmados: <Odometer value={confirmed} />
       </div>

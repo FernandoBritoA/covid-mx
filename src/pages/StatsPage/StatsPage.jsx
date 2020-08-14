@@ -34,7 +34,7 @@ const StatsPage = ({
     getProvinceStats();
     getGeneralStats();
   }, [getProvinceStats, getGeneralStats]);
-  //
+  //areStatsLoaded
   return areStatsLoaded ? (
     <div className='stats-page'>
       <div className='stats-page-container'>

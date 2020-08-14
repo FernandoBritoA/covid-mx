@@ -25,3 +25,9 @@
   color: var(--main-color);
   background-color: var(--light-grey);
 }
+
+@media screen and (max-width: 600px) {
+  .custom-selector {
+    font-size: 1.2rem;
+  }
+}

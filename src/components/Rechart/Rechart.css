@@ -9,6 +9,8 @@
 
 .chart-title {
   height: 8%;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 .chart-label {
@@ -29,4 +31,14 @@
 
 .cases-label {
   color: white;
+}
+
+@media screen and (max-width: 1350px) {
+  .chart-box {
+    width: 100%;
+    margin: 0.3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

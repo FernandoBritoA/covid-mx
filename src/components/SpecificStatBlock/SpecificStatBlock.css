@@ -40,3 +40,20 @@
   margin-right: 4px;
   margin-bottom: 2px;
 }
+
+@media screen and (max-width: 600px) {
+  .specific-stat-block {
+    padding: 0.4rem;
+    position: relative;
+  }
+  .specific-stat-label {
+    font-size: 0.9rem;
+  }
+
+  .chart-btn {
+    position: absolute;
+    width: 40%;
+    right: 0.4rem;
+    bottom: 0.4rem;
+  }
+}
